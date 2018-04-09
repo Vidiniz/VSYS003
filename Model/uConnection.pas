@@ -43,16 +43,17 @@ begin
   if not Assigned(_INSTANCE) then
     begin
       _INSTANCE := TFDConnection.Create(nil);
+      _INSTANCE.ConnectionDefName := DMConnection.Connection.ConnectionDefName;
       //_INSTANCE.Params.Add(DMConnection.ConManager.DriverDefFileName);
 
-      _INSTANCE.DriverName := 'FB';
+      {_INSTANCE.DriverName := 'FB';
       _INSTANCE.Params.Add('Database=C:\Projetos\VSYS001\Database\DB\DATABASEPROJECT.FDB');
       _INSTANCE.Params.Add('User_Name=sysdba');
       _INSTANCE.Params.Add('Password=masterkey');
       _INSTANCE.Params.Add('Server=localhost');
       _INSTANCE.Params.Add('CharacterSet=ISO8859_1');
       _INSTANCE.Params.Add('DriverID=FB');
-
+      }
       Result := _INSTANCE;
     end
   else

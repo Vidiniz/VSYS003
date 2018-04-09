@@ -54,7 +54,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.Title := 'VSYS003';
   Application.CreateForm(TDMConnection, DMConnection);
-  Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TFrmMain, FrmMain);
   ReportMemoryLeaksOnShutdown := True;
   Application.Run;

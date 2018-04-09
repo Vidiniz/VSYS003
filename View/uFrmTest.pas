@@ -26,7 +26,7 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  Memo1.Lines.AddStrings(DMConnection.ConManager.);
+  //Memo1.Lines.AddStrings(DMConnection.ConManager.);
 end;
 
 end.
