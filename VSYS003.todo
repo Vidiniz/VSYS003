@@ -1,0 +1,2 @@
+{TODO 3 -oVinícius Diniz -cCorreções : Criar verificação se existe um mesmo usário já cadastrado com o nome de usuário utilizado no cadastro corrente}
+{TODO 3 -oVinícius Diniz -cCorreções : Desconectar todos os Dataset e configura-los como fechados, é só abri-los caso o registro seja pesquisado, inserido ou alterado.}
