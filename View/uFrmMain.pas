@@ -18,7 +18,7 @@ uses
   uFrmRegisterProvider, uFrmRegisterBranch, uFrmRegisterCity, uFrmRegisterState,
   uFrmMainLogin, Vcl.ComCtrls, uModel.User, uMessageUtils, uFrmRegisterProfile,
   FireDAC.Comp.Client, uConnection, Vcl.ImgList, uFrmStock, uFrmOrderSale, uFrmPrice,
-  uFrmAbout;
+  uFrmAbout, uFrmAlterPass;
 
 type
   TFrmMain = class(TForm)
@@ -215,12 +215,14 @@ begin
   FreeAndNil(FrmStock);
 end;
 
-// Método executado pela action ActSystemClose
 procedure TFrmMain.ActSecurityLoginExecute(Sender: TObject);
 begin
-  //
+  FrmAlterPass := TFrmAlterPass.Create(Self,FUser.UserCode);
+  FrmAlterPass.ShowModal;
+  FreeAndNil(FrmAlterPass);
 end;
 
+// Método executado pela action ActSystemClose
 procedure TFrmMain.ActSystemCloseExecute(Sender: TObject);
 begin
   FreeAndNil(FUser);
