@@ -7,6 +7,10 @@ inherited FrmRegisterUser: TFrmRegisterUser
   inherited PgCtrlMain: TPageControl
     ActivePage = TbShtRegister
     inherited TbShtSearch: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 6
+      ExplicitWidth = 736
+      ExplicitHeight = 462
       inherited DBGrdControl: TDBGrid
         Columns = <
           item

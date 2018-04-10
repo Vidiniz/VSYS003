@@ -39,7 +39,6 @@ type
     ActResultMoviment: TAction;
     ActResultPrice: TAction;
     ActMovimentSales: TAction;
-    ActSecurityProfile: TAction;
     ActSecurityLogin: TAction;
     ActResultSales: TAction;
     ReinActMMBar: TActionMainMenuBar;
@@ -50,7 +49,6 @@ type
     ActTlBrMainMenu: TActionToolBar;
     StsBrUserProfile: TStatusBar;
     ImgLstActManager: TImageList;
-    ActSecurityLogoff: TAction;
     procedure ActRegisterClientExecute(Sender: TObject);
     procedure ActRegisterUserExecute(Sender: TObject);
     procedure ActRegisterProfileExecute(Sender: TObject);
@@ -227,6 +225,24 @@ end;
 
 procedure TFrmMain.ActSecurityLogoffExecute(Sender: TObject);
 begin
+  //
+end;
+
+procedure TFrmMain.ActSecurityProfileExecute(Sender: TObject);
+begin
+ //
+end;
+
+// Método executado pela action ActSystemClose
+procedure TFrmMain.ActSystemCloseExecute(Sender: TObject);
+begin
+  FreeAndNil(FUser);
+  Application.Terminate;
+end;
+
+// Método executado pela action ActSystemLogoff
+procedure TFrmMain.ActSystemLogoffExecute(Sender: TObject);
+begin
   FUser := TUser.Create;
   FrmMainLogin := TFrmMainLogin.Create(Self, FUser);
   FrmMainLogin.ShowModal;
@@ -254,24 +270,6 @@ begin
       Application.Terminate;
     end;
   FreeAndNil(FrmMainLogin);
-end;
-
-procedure TFrmMain.ActSecurityProfileExecute(Sender: TObject);
-begin
- //
-end;
-
-// Método executado pela action ActSystemClose
-procedure TFrmMain.ActSystemCloseExecute(Sender: TObject);
-begin
-  FreeAndNil(FUser);
-  Application.Terminate;
-end;
-
-// Método executado pela action ActSystemLogoff
-procedure TFrmMain.ActSystemLogoffExecute(Sender: TObject);
-begin
-  FreeAndNil(FUser);
 end;
 
 // Método executado ao fechar o formulário

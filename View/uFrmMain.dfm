@@ -163,17 +163,7 @@ object FrmMain: TFrmMain
           item
             Items = <
               item
-                Action = ActSecurityProfile
-                Caption = '&Permiss'#227'o de Acesso'
-                ImageIndex = 4
-              end
-              item
                 Action = ActSecurityLogin
-                Caption = '&Alterar Senha'
-                ImageIndex = 12
-              end
-              item
-                Action = ActSecurityLogoff
                 ImageIndex = 12
               end>
             Caption = 'S&eguran'#231'a'
@@ -274,10 +264,6 @@ object FrmMain: TFrmMain
             ImageIndex = 29
           end
           item
-            Action = ActSecurityLogin
-            ImageIndex = 12
-          end
-          item
             Action = ActRegisterActiv
             ImageIndex = 2
           end
@@ -300,6 +286,10 @@ object FrmMain: TFrmMain
           item
             Action = ActRegisterSection
             ImageIndex = 18
+          end
+          item
+            Action = ActSecurityLogin
+            ImageIndex = 12
           end>
         ActionBar = ActTlBrMainMenu
       end>
@@ -407,12 +397,6 @@ object FrmMain: TFrmMain
       ImageIndex = 5
       OnExecute = ActMovimentSalesExecute
     end
-    object ActSecurityProfile: TAction
-      Category = 'Seguran'#231'a'
-      Caption = 'Permiss'#227'o de Acesso'
-      ImageIndex = 4
-      OnExecute = ActSecurityProfileExecute
-    end
     object ActSecurityLogin: TAction
       Category = 'Seguran'#231'a'
       Caption = 'Alterar Senha'
@@ -441,12 +425,6 @@ object FrmMain: TFrmMain
       Caption = 'Logoff'
       ImageIndex = 9
       OnExecute = ActSystemLogoffExecute
-    end
-    object ActSecurityLogoff: TAction
-      Category = 'Seguran'#231'a'
-      Caption = 'Efetuar LogOff'
-      ImageIndex = 12
-      OnExecute = ActSecurityLogoffExecute
     end
   end
   object ImgLstActManager: TImageList

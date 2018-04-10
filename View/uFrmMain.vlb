@@ -55,9 +55,6 @@ Coordinates=0,189,109,36
 [ActMngMainMenu]
 Coordinates=634,1,118,36
 
-[ActSecurityProfile]
-Coordinates=634,56,117,36
-
 [ReinActMMBar]
 Coordinates=138,78,101,36
 
@@ -98,5 +95,5 @@ Coordinates=794,1,198,58
 Coordinates=10,78,118,36
 
 []
-Coordinates=846,78,113,36
+Coordinates=634,56,117,36
 

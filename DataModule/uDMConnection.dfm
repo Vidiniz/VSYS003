@@ -1,7 +1,7 @@
 object DMConnection: TDMConnection
   OldCreateOrder = False
   Height = 395
-  Width = 676
+  Width = 698
   object Connection: TFDConnection
     Params.Strings = (
       'ConnectionDef=FBDatabase')
@@ -427,6 +427,7 @@ object DMConnection: TDMConnection
     Top = 136
   end
   object QueryProfile: TFDQuery
+    Active = True
     CachedUpdates = True
     Connection = Connection
     Transaction = Transacition
