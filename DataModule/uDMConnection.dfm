@@ -1,7 +1,7 @@
 object DMConnection: TDMConnection
   OldCreateOrder = False
   Height = 395
-  Width = 698
+  Width = 784
   object Connection: TFDConnection
     Params.Strings = (
       'ConnectionDef=FBDatabase')
@@ -1315,6 +1315,7 @@ object DMConnection: TDMConnection
       end>
     object QuerySalesHeaderNUMPEDIDO: TIntegerField
       DisplayLabel = 'N'#186' Pedido'
+      DisplayWidth = 12
       FieldName = 'NUMPEDIDO'
       Origin = 'NUMPEDIDO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -1322,6 +1323,7 @@ object DMConnection: TDMConnection
     end
     object QuerySalesHeaderCODFILIAL: TIntegerField
       DisplayLabel = 'C'#243'd. Filial'
+      DisplayWidth = 12
       FieldName = 'CODFILIAL'
       Origin = 'CODFILIAL'
       Required = True
@@ -1329,6 +1331,7 @@ object DMConnection: TDMConnection
     object QuerySalesHeaderFILIAL: TStringField
       AutoGenerateValue = arDefault
       DisplayLabel = 'Filial'
+      DisplayWidth = 12
       FieldName = 'FILIAL'
       Origin = 'FILIAL'
       ProviderFlags = []
@@ -1337,6 +1340,7 @@ object DMConnection: TDMConnection
     end
     object QuerySalesHeaderCODCLIENTE: TIntegerField
       DisplayLabel = 'C'#243'd. Cliente'
+      DisplayWidth = 12
       FieldName = 'CODCLIENTE'
       Origin = 'CODCLIENTE'
       Required = True
@@ -1344,6 +1348,7 @@ object DMConnection: TDMConnection
     object QuerySalesHeaderNOME: TStringField
       AutoGenerateValue = arDefault
       DisplayLabel = 'Nome / Raz'#227'o Social'
+      DisplayWidth = 48
       FieldName = 'NOME'
       Origin = 'NOME'
       ProviderFlags = []
@@ -1352,6 +1357,7 @@ object DMConnection: TDMConnection
     end
     object QuerySalesHeaderCODPLANO: TIntegerField
       DisplayLabel = 'C'#243'd. Plano'
+      DisplayWidth = 12
       FieldName = 'CODPLANO'
       Origin = 'CODPLANO'
       Required = True
@@ -1359,6 +1365,7 @@ object DMConnection: TDMConnection
     object QuerySalesHeaderDESCRICAO: TStringField
       AutoGenerateValue = arDefault
       DisplayLabel = 'Plano de Pgto.'
+      DisplayWidth = 24
       FieldName = 'DESCRICAO'
       Origin = 'DESCRICAO'
       ProviderFlags = []
@@ -1366,11 +1373,13 @@ object DMConnection: TDMConnection
     end
     object QuerySalesHeaderDATA: TDateField
       DisplayLabel = 'Dt. Pedido'
+      DisplayWidth = 12
       FieldName = 'DATA'
       Origin = '"DATA"'
     end
     object QuerySalesHeaderVLTOTAL: TBCDField
       DisplayLabel = 'Vl. Total'
+      DisplayWidth = 23
       FieldName = 'VLTOTAL'
       Origin = 'VLTOTAL'
       Precision = 18
@@ -1378,6 +1387,7 @@ object DMConnection: TDMConnection
     end
     object QuerySalesHeaderVLDESCONTO: TBCDField
       DisplayLabel = 'Vl. Desc.'
+      DisplayWidth = 23
       FieldName = 'VLDESCONTO'
       Origin = 'VLDESCONTO'
       Precision = 18
@@ -1385,6 +1395,7 @@ object DMConnection: TDMConnection
     end
     object QuerySalesHeaderSTATUS: TStringField
       DisplayLabel = 'Status'
+      DisplayWidth = 6
       FieldName = 'STATUS'
       Origin = 'STATUS'
       FixedChar = True
@@ -1392,6 +1403,7 @@ object DMConnection: TDMConnection
     end
     object QuerySalesHeaderDTCANCEL: TDateField
       DisplayLabel = 'Dt. Cancelamento'
+      DisplayWidth = 17
       FieldName = 'DTCANCEL'
       Origin = 'DTCANCEL'
     end
@@ -1690,5 +1702,199 @@ object DMConnection: TDMConnection
       Precision = 18
       Size = 2
     end
+  end
+  object QuerySumSalesHeader: TFDQuery
+    Active = True
+    Connection = Connection
+    Transaction = Transacition
+    SQL.Strings = (
+      'SELECT VPEDIDO.NUMPEDIDO, VFILIAL.CODFILIAL, VFILIAL.FILIAL,'
+      
+        '       VCLIENTE.CODCLIENTE, VCLIENTE.NOME, VPLPAGAMENTO.CODPLANO' +
+        ','
+      '       VPLPAGAMENTO.DESCRICAO, VPEDIDO.DATA, VPEDIDO.VLTOTAL,'
+      '       VPEDIDO.VLDESCONTO '
+      '  FROM VPEDIDO, VCLIENTE, VFILIAL , VPLPAGAMENTO'
+      ' WHERE VPEDIDO.CODCLIENTE = VCLIENTE.CODCLIENTE'
+      '   AND VPEDIDO.CODFILIAL = VFILIAL.CODFILIAL'
+      '   AND VPEDIDO.CODPLANO = VPLPAGAMENTO.CODPLANO'
+      '   AND VPEDIDO.DATA BETWEEN :DATAINICIO AND :DATAFIM'
+      ' ORDER BY VPEDIDO.NUMPEDIDO')
+    Left = 712
+    Top = 80
+    ParamData = <
+      item
+        Name = 'DATAINICIO'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DATAFIM'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object IntegerField1: TIntegerField
+      FieldName = 'NUMPEDIDO'
+      Origin = 'NUMPEDIDO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object IntegerField2: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODFILIAL'
+      Origin = 'CODFILIAL'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object StringField1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FILIAL'
+      Origin = 'FILIAL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object IntegerField3: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODCLIENTE'
+      Origin = 'CODCLIENTE'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object StringField2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object IntegerField4: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODPLANO'
+      Origin = 'CODPLANO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object StringField3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object DateField1: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+    object BCDField1: TBCDField
+      FieldName = 'VLTOTAL'
+      Origin = 'VLTOTAL'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object BCDField2: TBCDField
+      FieldName = 'VLDESCONTO'
+      Origin = 'VLDESCONTO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+  end
+  object QuerySumSalesItens: TFDQuery
+    Active = True
+    MasterSource = DtSrcDetailSumSales
+    MasterFields = 'NUMPEDIDO'
+    DetailFields = 'NUMPEDIDO'
+    Connection = Connection
+    Transaction = Transacition
+    FetchOptions.AssignedValues = [evCache]
+    FetchOptions.Cache = [fiBlobs, fiMeta]
+    SQL.Strings = (
+      
+        'SELECT VITEMPEDIDO.NUMSEQ, VPRODUTO.CODPRODUTO, VPRODUTO.DESCRIC' +
+        'AO, '
+      
+        '       VITEMPEDIDO.QTDE, VITEMPEDIDO.PRECO, VITEMPEDIDO.CODBARRA' +
+        'S, '
+      
+        '       VITEMPEDIDO.VLDESC, VITEMPEDIDO.TOTALPRECO, VITEMPEDIDO.N' +
+        'UMPEDIDO'
+      '  FROM VITEMPEDIDO, VPRODUTO'
+      ' WHERE VITEMPEDIDO.CODPRODUTO = VPRODUTO.CODPRODUTO'
+      '   AND VITEMPEDIDO.NUMPEDIDO = :NUMPEDIDO'
+      '')
+    Left = 712
+    Top = 192
+    ParamData = <
+      item
+        Name = 'NUMPEDIDO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Size = 4
+        Value = Null
+      end>
+    object IntegerField5: TIntegerField
+      FieldName = 'NUMSEQ'
+      Origin = 'NUMSEQ'
+    end
+    object IntegerField6: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODPRODUTO'
+      Origin = 'CODPRODUTO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object StringField4: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object BCDField3: TBCDField
+      FieldName = 'QTDE'
+      Origin = 'QTDE'
+      Precision = 18
+      Size = 2
+    end
+    object BCDField4: TBCDField
+      FieldName = 'PRECO'
+      Origin = 'PRECO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object StringField5: TStringField
+      FieldName = 'CODBARRAS'
+      Origin = 'CODBARRAS'
+      Size = 13
+    end
+    object BCDField5: TBCDField
+      FieldName = 'VLDESC'
+      Origin = 'VLDESC'
+      Precision = 18
+      Size = 2
+    end
+    object BCDField6: TBCDField
+      FieldName = 'TOTALPRECO'
+      Origin = 'TOTALPRECO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object IntegerField7: TIntegerField
+      FieldName = 'NUMPEDIDO'
+      Origin = 'NUMPEDIDO'
+      Required = True
+    end
+  end
+  object DtSrcDetailSumSales: TDataSource
+    DataSet = QuerySumSalesHeader
+    Left = 712
+    Top = 136
   end
 end

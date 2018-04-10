@@ -18,7 +18,7 @@ uses
   uFrmRegisterProvider, uFrmRegisterBranch, uFrmRegisterCity, uFrmRegisterState,
   uFrmMainLogin, Vcl.ComCtrls, uModel.User, uMessageUtils, uFrmRegisterProfile,
   FireDAC.Comp.Client, uConnection, Vcl.ImgList, uFrmStock, uFrmOrderSale, uFrmPrice,
-  uFrmAbout, uFrmAlterPass;
+  uFrmAbout, uFrmAlterPass, uFrmSalesSummary;
 
 type
   TFrmMain = class(TForm)
@@ -72,6 +72,7 @@ type
     procedure ActSecurityLoginExecute(Sender: TObject);
     procedure ActSecurityProfileExecute(Sender: TObject);
     procedure ActSecurityLogoffExecute(Sender: TObject);
+    procedure ActResultSalesExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -207,6 +208,13 @@ begin
   FrmPrice := TFrmPrice.Create(self);
   FrmPrice.ShowModal;
   FreeAndNil(FrmPrice);
+end;
+
+procedure TFrmMain.ActResultSalesExecute(Sender: TObject);
+begin
+  FrmSalesSummary := TFrmSalesSummary.Create(Self);
+  FrmSalesSummary.ShowModal;
+  FreeAndNil(FrmSalesSummary);
 end;
 
 procedure TFrmMain.ActResultStockExecute(Sender: TObject);

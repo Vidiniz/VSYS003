@@ -232,6 +232,10 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="View\uFrmSalesSummary.pas">
+            <Form>FrmSalesSummary</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="VSYS003.todo"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

@@ -189,6 +189,28 @@ type
     QueryConsultPriceCODBARRAS: TStringField;
     QueryConsultPriceCUSTO: TBCDField;
     QueryConsultPricePVENDA: TBCDField;
+    QuerySumSalesHeader: TFDQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
+    StringField1: TStringField;
+    IntegerField3: TIntegerField;
+    StringField2: TStringField;
+    IntegerField4: TIntegerField;
+    StringField3: TStringField;
+    DateField1: TDateField;
+    BCDField1: TBCDField;
+    BCDField2: TBCDField;
+    QuerySumSalesItens: TFDQuery;
+    IntegerField5: TIntegerField;
+    IntegerField6: TIntegerField;
+    StringField4: TStringField;
+    BCDField3: TBCDField;
+    BCDField4: TBCDField;
+    StringField5: TStringField;
+    BCDField5: TBCDField;
+    BCDField6: TBCDField;
+    IntegerField7: TIntegerField;
+    DtSrcDetailSumSales: TDataSource;
   private
     { Private declarations }
   public

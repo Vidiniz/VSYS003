@@ -390,6 +390,7 @@ object FrmMain: TFrmMain
       Category = 'Relat'#243'rios'
       Caption = 'Resumo de Vendas'
       ImageIndex = 29
+      OnExecute = ActResultSalesExecute
     end
     object ActMovimentSales: TAction
       Category = 'Vendas'

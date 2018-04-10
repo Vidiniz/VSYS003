@@ -45,7 +45,8 @@ uses
   uFrmAlterPrice in 'View\uFrmAlterPrice.pas' {FrmAlterPrice},
   uFrmAbout in 'View\uFrmAbout.pas' {AboutBox},
   uFrmAlterPass in 'View\uFrmAlterPass.pas' {FrmAlterPass},
-  uFrmTest in 'View\uFrmTest.pas' {Form1};
+  uFrmTest in 'View\uFrmTest.pas' {Form1},
+  uFrmSalesSummary in 'View\uFrmSalesSummary.pas' {FrmSalesSummary};
 
 {$R *.res}
 
@@ -55,6 +56,7 @@ begin
   Application.Title := 'VSYS003';
   Application.CreateForm(TDMConnection, DMConnection);
   Application.CreateForm(TFrmMain, FrmMain);
+  Application.CreateForm(TFrmSalesSummary, FrmSalesSummary);
   ReportMemoryLeaksOnShutdown := True;
   Application.Run;
 end.
