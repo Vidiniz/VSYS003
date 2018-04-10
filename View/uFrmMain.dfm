@@ -171,6 +171,10 @@ object FrmMain: TFrmMain
                 Action = ActSecurityLogin
                 Caption = '&Alterar Senha'
                 ImageIndex = 12
+              end
+              item
+                Action = ActSecurityLogoff
+                ImageIndex = 12
               end>
             Caption = 'S&eguran'#231'a'
           end
@@ -407,6 +411,7 @@ object FrmMain: TFrmMain
       Category = 'Seguran'#231'a'
       Caption = 'Permiss'#227'o de Acesso'
       ImageIndex = 4
+      OnExecute = ActSecurityProfileExecute
     end
     object ActSecurityLogin: TAction
       Category = 'Seguran'#231'a'
@@ -436,6 +441,12 @@ object FrmMain: TFrmMain
       Caption = 'Logoff'
       ImageIndex = 9
       OnExecute = ActSystemLogoffExecute
+    end
+    object ActSecurityLogoff: TAction
+      Category = 'Seguran'#231'a'
+      Caption = 'Efetuar LogOff'
+      ImageIndex = 12
+      OnExecute = ActSecurityLogoffExecute
     end
   end
   object ImgLstActManager: TImageList

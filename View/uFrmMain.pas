@@ -50,6 +50,7 @@ type
     ActTlBrMainMenu: TActionToolBar;
     StsBrUserProfile: TStatusBar;
     ImgLstActManager: TImageList;
+    ActSecurityLogoff: TAction;
     procedure ActRegisterClientExecute(Sender: TObject);
     procedure ActRegisterUserExecute(Sender: TObject);
     procedure ActRegisterProfileExecute(Sender: TObject);
@@ -71,6 +72,8 @@ type
     procedure ActResultPriceExecute(Sender: TObject);
     procedure ActHelperAboutExecute(Sender: TObject);
     procedure ActSecurityLoginExecute(Sender: TObject);
+    procedure ActSecurityProfileExecute(Sender: TObject);
+    procedure ActSecurityLogoffExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -222,6 +225,42 @@ begin
   FreeAndNil(FrmAlterPass);
 end;
 
+procedure TFrmMain.ActSecurityLogoffExecute(Sender: TObject);
+begin
+  FUser := TUser.Create;
+  FrmMainLogin := TFrmMainLogin.Create(Self, FUser);
+  FrmMainLogin.ShowModal;
+  if FrmMainLogin.ModalResult = mrOk then
+    begin
+      if FUser.GetDataUser then
+        begin
+          StsBrUserProfile.Panels.Items[0].Text :=
+            'Usuário : '+FUser.UserCode+' - '+FUser.UserName;
+          StsBrUserProfile.Panels.Items[1].Text :=
+            'Perfil : '+FUser.ProfileName;
+          ActMngMainMenu :=  FUser.GetPermission(ActMngMainMenu);
+        end
+
+      else
+        begin
+          MessageDlg(MsgLoginCorrupted,mtError,[mbOk],0);
+          Application.Terminate;
+        end;
+    end
+
+  else
+    begin
+      FreeAndNil(FUser);
+      Application.Terminate;
+    end;
+  FreeAndNil(FrmMainLogin);
+end;
+
+procedure TFrmMain.ActSecurityProfileExecute(Sender: TObject);
+begin
+ //
+end;
+
 // Método executado pela action ActSystemClose
 procedure TFrmMain.ActSystemCloseExecute(Sender: TObject);
 begin
@@ -232,7 +271,7 @@ end;
 // Método executado pela action ActSystemLogoff
 procedure TFrmMain.ActSystemLogoffExecute(Sender: TObject);
 begin
-//
+  FreeAndNil(FUser);
 end;
 
 // Método executado ao fechar o formulário
